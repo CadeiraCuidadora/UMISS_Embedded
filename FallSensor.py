@@ -1,6 +1,6 @@
 fall_samples_number = 10 #Number of samples to filter the average
 fall_samples_delay = 1 #delay of 1 second between each measurement
-fall_channel = 2 #ADS1115 Channel for the GSR sensor
+fall_channel = 2 #ADS1115 Channel for the Fall Sensor
 GAIN = 1 #ADS1115 Gain for values between +/- 4.096V
 
 
