@@ -3,6 +3,10 @@ fall_samples_delay = 1 #delay of 1 second between each measurement
 fall_channel = 2 #ADS1115 Channel for the GSR sensor
 GAIN = 1 #ADS1115 Gain for values between +/- 4.096V
 
+
+#-----------------------------FallSensor()----------------------------------------#
+#Alert function for the fall sensor to detect if the user fell from the wheelchair#
+#---------------------------------------------------------------------------------#
 def FallSensor():
     fall_sum = 0.0 #Sum of the 10 samples in each loop
     for i in range(fall_samples_number):
