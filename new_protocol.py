@@ -1,14 +1,13 @@
 import serial
 import matplotlib.pyplot as plt
-
 import numpy as np
 import time
+
 portName = '/dev/tty.usbmodem1411'
-#portName = '/dev/cu.usbmodem0E216FE1'
 
 p = serial.Serial(port=portName, baudrate=230400,
                   bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE)
-#plt.axis([0, 10, 0, 1])
+
 plt.ion() #Turn on interactive mode on plot from matplotlib
 
 samples = 2048 #Define number of samples to plot
@@ -64,4 +63,5 @@ while(1):
 print "\nFreq max: %.3f kHz" %(max_freq/1000.0)
 print "Freq min:%.3f kHz" %(min_freq/1000.0)
 print"total fails:", fail_counter
+
 p.close()
