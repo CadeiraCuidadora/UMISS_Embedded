@@ -9,11 +9,11 @@ pd = '/dev/tty.usbmodem1411'
 p = serial.Serial(port=pd, baudrate=230400,
                   bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE)
 #plt.axis([0, 10, 0, 1])
-plt.ion()
+plt.ion() #Turn on interactive mode on plot from matplotlib
 
-samples = 2048
-x = np.arange(samples)
-y = np.zeros(samples)
+samples = 2048 #Define number of samples to plot
+x = np.arange(samples) #set evenly spaced array from captured samples
+y = np.zeros(samples) #create a array with the size of x filled with zeros
 i = 0
 fail_counter = 0
 max_freq = 0
@@ -22,16 +22,16 @@ min_freq = 1e13
 
 while(1):
     try:
-        plt.clf()
+        plt.clf() #clear current graph space
         plt.xlabel("Time(s)")
         plt.xlim(0, samples)
         plt.ylim(-0.5, 5.5)
 
-        start = time.time()
+        start = time.time() #start time counting
         i = 0
         while i < samples:
-            value1 = p.read()
-            value2 = p.read()
+            value1 = p.read() #read val1  from microcontroller from serial
+            value2 = p.read() #read val2 from microcontroller from serail
 
             try:
                 v = ord(value1[0])*256 + ord(value2[0])
@@ -48,8 +48,10 @@ while(1):
                 #i = i +1
 
         freq = float(samples)/(time.time() - start)
-        if freq > max_freq: max_freq = freq
-        elif freq < min_freq: min_freq = freq
+        if freq > max_freq: 
+            max_freq = freq
+        elif freq < min_freq:
+            min_freq = freq
 
         plt.plot(x, y)
         plt.pause(1.0/60.0)
