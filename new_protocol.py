@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 
 import numpy as np
 import time
-pd = '/dev/tty.usbmodem1411'
-#pd = '/dev/cu.usbmodem0E216FE1'
+portName = '/dev/tty.usbmodem1411'
+#portName = '/dev/cu.usbmodem0E216FE1'
 
-p = serial.Serial(port=pd, baudrate=230400,
+p = serial.Serial(port=portName, baudrate=230400,
                   bytesize=serial.EIGHTBITS, parity=serial.PARITY_NONE)
 #plt.axis([0, 10, 0, 1])
 plt.ion() #Turn on interactive mode on plot from matplotlib
@@ -48,7 +48,7 @@ while(1):
                 #i = i +1
 
         freq = float(samples)/(time.time() - start)
-        if freq > max_freq: 
+        if freq > max_freq:
             max_freq = freq
         elif freq < min_freq:
             min_freq = freq
